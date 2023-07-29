@@ -1,0 +1,35 @@
+extends layout
+
+block content
+    br
+    form.well(action="/addtask", method="post")
+       h3 Create, Read, Update, Delete
+
+       label(for="kanji") Kanji: 
+       input(name="kanji", type="text", id="kanji")
+
+       label(for="grade") Grade: 
+       input(name="grade", type="number", id="grade")
+
+       label(for="stroke_count") Stroke Count: 
+       input(name="stroke_count", type="number", id="stroke_count")
+
+       label(for="meanings") Meanings: 
+       input(name="meanings", type="text", id="meanings")
+
+       label(for="kun_readings") Kun Readings
+       input(name="kun_readings", type="text", id="kun_readings")
+
+       label(for="on_readings") On Readings
+       input(name="on_readings", type="text", id="on_readings")
+
+       label(for="readings") Readings
+       input(name="readings", type="text", id="readings")
+
+       label(for="jlpt") JLPT
+       input(name="jlpt", type="number", id="jlpt")
+
+       br
+       button.btn(type="submit") Add item
+    // Link to the custom styles for this page only
+    link(rel="stylesheet", href="/stylesheets/edit-styles.css")

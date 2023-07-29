@@ -1,0 +1,67 @@
+extends layout
+block content
+     h1 #{title}
+     br
+
+     form(action="/search", method="post")
+      table.table.table-striped.table-bordered
+         tr
+           td 
+             label(for="kanji") Kanji
+             br
+             input(name="kanji", type="text", id="kanji", value=kanjiValue)
+           td 
+             label(for="grade") Grade 
+             br
+             input(name="grade", type="number", id="grade", value=gradeValue)
+           td
+             label(for="stroke_count") Stroke Count
+             br
+             input(name="stroke_count", type="number", id="stroke_count", value=strokeCountValue)
+           td 
+             label(for="meanings") Meanings
+             br
+             input(name="meanings", type="text", id="meanings", value=meaningsValue)
+           td 
+             label(for="kun_readings") Kun Readings
+             br
+             input(name="kun_readings", type="text", id="kun_readings", value=kunReadingsValue)
+           td 
+             label(for="on_readings") On Readings
+             br
+             input(name="on_readings", type="text", id="on_readings", value=onReadingsValue)
+           td 
+             label(for="name_readings") Name Readings
+             br
+             input(name="name_readings", type="text", id="name_readings", value=nameReadingsValue)
+           td 
+             label(for="jlpt") JLPT Level
+             br
+             input(name="jlpt", type="number", id="jlpt", value=jlptValue)
+         if tasks.length === 0
+           // Display a message when no results are found
+           tr
+             td(colspan="8") No results found.
+         else
+           each task in tasks
+             tr
+               td #{task.kanji}
+               td #{task.grade}
+               td #{task.stroke_count}
+               td #{task.meanings}
+               td #{task.kun_readings}
+               td #{task.on_readings}
+               td #{task.name_readings}
+               td #{task.jlpt}
+       button.btn.btn-primary(type="submit") Search
+     hr
+     form.well(action="/addtask", method="post")
+       h3 Create, Read, Update, Delete
+       label Kanji: 
+       input(name="kanji", type="textbox")
+       label Item Name: 
+       input(name="name", type="textbox")
+       label Item Category: 
+       input(name="category", type="textbox")
+       br
+       button.btn(type="submit") Add item
